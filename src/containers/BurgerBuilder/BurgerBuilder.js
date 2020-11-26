@@ -11,7 +11,8 @@ import Spinner from "../UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import * as actions from "../../store/actions/index";
 
-class BurgerBuilder extends Component {
+//this export is for testing file
+export class BurgerBuilder extends Component {
   state = {
     // ingredients: null,
     // totalPrice: 4,
@@ -145,7 +146,7 @@ class BurgerBuilder extends Component {
           ingredients={this.props.ings}
           purchaseCanceled={this.purchaseCancelHandler}
           purchaseContinued={this.purchaseContinueHandler}
-          price={this.props.price.toFixed(2)}
+          price={this.props.price}
         />
       );
     }
@@ -172,7 +173,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     ings: state.burgerBuilder.ingredients,
-    price: state.burgerBuilder.totalPrice,
+    price: state.burgerBuilder.totalPrice.toFixed(2),
     error: state.burgerBuilder.error,
     isAuthenticated: state.auth.token !== null,
   };
